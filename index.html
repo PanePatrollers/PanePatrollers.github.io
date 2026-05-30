@@ -282,7 +282,7 @@
   <div class="section-label">Get In Touch</div>
   <h2 class="section-title">Request a Free Quote</h2>
   <p class="section-sub">Fill out the form and we'll get back to you within one business day with a no-obligation estimate.</p>
-  <form class="contact-form" action="https://formspree.io/f/mbdbbbjj" method="POST">
+  <form class="contact-form" id="quote-form">
   <div><input type="text" name="first_name" placeholder="First Name" required></div>
   <div><input type="text" name="last_name" placeholder="Last Name" required></div>
   <div><input type="email" name="email" placeholder="Email Address" required></div>
@@ -377,14 +377,30 @@
   });
   });
 
-  function handleSubmit(e) {
-  e.preventDefault();
-  e.target.style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-  }
-</script>
-</body>
-</html>
+  const form = document.getElementById('quote-form');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mbdbbbjj', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — please try again.';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Network error — please try again.';
+      btn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
