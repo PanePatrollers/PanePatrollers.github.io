@@ -286,7 +286,7 @@
   <div><input type="text" name="first_name" placeholder="First Name" required></div>
   <div><input type="text" name="last_name" placeholder="Last Name" required></div>
   <div><input type="email" name="email" placeholder="Email Address" required></div>
-  <div><input type="tel" name="phone" placeholder="Phone Number"></div>
+  <div><input type="tel" name="phone" placeholder="Phone Number" required></div>
   <div>
   <select name="service_type" required>
   <option value="" disabled selected>Service Type</option>
@@ -298,7 +298,7 @@
   </select>
   </div>
   <div>
-  <select name="frequency">
+  <select name="frequency" required>
   <option value="" disabled selected>Frequency</option>
   <option>One-time</option>
   <option>Monthly</option>
@@ -307,10 +307,10 @@
   </select>
   </div>
   <div>
-  <input type="number" name="panes_of_glass" placeholder="Number of Panes of Glass" min="1">
+  <input type="number" name="panes_of_glass" placeholder="Number of Panes of Glass" min="1" required>
   </div>
   <div>
-  <select name="last_cleaned">
+  <select name="last_cleaned" required>
   <option value="" disabled selected>When Were Your Windows Last Cleaned?</option>
   <option>Never / Not Sure</option>
   <option>Within the last month</option>
