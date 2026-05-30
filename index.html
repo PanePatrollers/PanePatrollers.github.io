@@ -282,26 +282,23 @@
     <div class="section-label">Get In Touch</div>
     <h2 class="section-title">Request a Free Quote</h2>
     <p class="section-sub">Fill out the form and we'll get back to you within one business day with a no-obligation estimate.</p>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div><input type="text" placeholder="First Name" required></div>
-      <div><input type="text" placeholder="Last Name" required></div>
-      <div><input type="email" placeholder="Email Address" required></div>
-      <div><input type="tel" placeholder="Phone Number"></div>
+    <form class="contact-form" action="https://formspree.io/f/mbdbbbjj" method="POST">
+      <div><input type="text" name="first_name" placeholder="First Name" required></div>
+      <div><input type="text" name="last_name" placeholder="Last Name" required></div>
+      <div><input type="email" name="email" placeholder="Email Address" required></div>
+      <div><input type="tel" name="phone" placeholder="Phone Number"></div>
       <div>
-        <select required>
+        <select name="service_type" required>
           <option value="" disabled selected>Service Type</option>
-          <option>Residential – Basic</option>
-          <option>Residential – Complete</option>
-          <option>Residential – Premium</option>
+          <option>Residential – Exterior Windows</option>
+          <option>Residential – Exterior &amp; Interior Windows</option>
           <option>Commercial</option>
-          <option>Post-Construction</option>
           <option>Solar Panels</option>
-          <option>Gutter Cleaning</option>
           <option>Other / Not Sure</option>
         </select>
       </div>
       <div>
-        <select>
+        <select name="frequency">
           <option value="" disabled selected>Frequency</option>
           <option>One-time</option>
           <option>Monthly</option>
@@ -309,8 +306,23 @@
           <option>Seasonal (Quarterly)</option>
         </select>
       </div>
+      <div>
+        <input type="number" name="panes_of_glass" placeholder="Number of Panes of Glass" min="1">
+      </div>
       <div class="form-full">
-        <textarea placeholder="Tell us about your property or any special requests..."></textarea>
+        <select name="last_cleaned">
+          <option value="" disabled selected>When Were Your Windows Last Cleaned?</option>
+          <option>Never / Not Sure</option>
+          <option>Within the last month</option>
+          <option>1–3 months ago</option>
+          <option>3–6 months ago</option>
+          <option>6–12 months ago</option>
+          <option>Over a year ago</option>
+          <option>Several years ago</option>
+        </select>
+      </div>
+      <div class="form-full">
+        <textarea name="message" placeholder="Tell us about your property or any special requests..."></textarea>
       </div>
       <div class="form-full">
         <button type="submit" class="submit-btn">Send My Request →</button>
